@@ -31,7 +31,7 @@ void cpp_class6_test::testRemoveIntDuplicates()
 	unsigned int length = 9;
 	char mockArray []={'H','e', 'l', 'l', 'o', 'W', 'o', 'l', 'd' };
 	char charExpectedResult[] = {'H', 'e', 'l', 'o', 'W', 'd' };
-	char* mockResult=cpp_class6::removeDuplicates(mockArray,length);
+	const char* mockResult=cpp_class6::removeDuplicates(mockArray,length);
 	for (unsigned int i = 0;i<length;i++) {
 		assert(mockResult[i]==charExpectedResult[i]);
 	}
@@ -41,15 +41,13 @@ void cpp_class6_test::testRemoveIntDuplicates()
 void cpp_class6_test::testRemoveFloatDuplicates()
 {
 	unsigned int length = 9;
-	float* mockArray = new float [length] {10.5f, -4.f, 10.55f, 4.f, 40.24f, 10.5f, 9.2f, -4.f, 10.24f};
-	float* floatExpectedResult = new float[7]{ 10.5f, -4.f, 10.55f, 4.f,40.24f,9.2f ,10.24f };
-	float* mockResult = cpp_class6::removeDuplicates(mockArray, length);
+	float mockArray[]= {10.5f, -4.f, 10.55f, 4.f, 40.24f, 10.5f, 9.2f, -4.f, 10.24f};
+	float floatExpectedResult[] ={ 10.5f, -4.f, 10.55f, 4.f,40.24f,9.2f ,10.24f };
+	const float* mockResult = cpp_class6::removeDuplicates(mockArray, length);
 	for (unsigned int i = 0; i<length; i++) {
 		assert(mockResult[i] == floatExpectedResult[i]);
 	}
-	delete[] mockResult;
-	delete[] mockArray;
-	delete[] floatExpectedResult;
+	delete[] mockResult;	
 }
 
 void cpp_class6_test::testRotateToleft()

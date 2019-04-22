@@ -28,28 +28,33 @@ void cpp_class6::sortArray(int * const myArray, const unsigned int length)
 	}
 }
 
-char* cpp_class6::removeDuplicates(char * const myCharArray,unsigned int& length)
+const char* cpp_class6::removeDuplicates(const char * const myCharArray,unsigned int& length)
 {
 	assert(myCharArray && length>0);
 	if (length ==1) {
 		return myCharArray;
 	}
 	char* newCharArray = new char[length];
+	
 	unsigned int newArrayIndex = 0;
 	char currentVal;
+	bool isDuplicated = false;
 
 	for (unsigned int i=0;i< length;i++) {
-		
-		if (myCharArray[i] == -1) {
-			continue;
-		}
+	
 		currentVal = myCharArray[i];
-		newCharArray[newArrayIndex++] = currentVal;
-
-		for (unsigned int j = i+1; j< length; j++) {
-			if (currentVal== myCharArray[j]) {
-				myCharArray[j] = -1;
+		
+		for (unsigned int j = 0; j< length; j++) {
+			if (currentVal== newCharArray[j]) {
+				isDuplicated = true;
+				break;
 			}
+		}
+		if (isDuplicated) {
+			isDuplicated = false;
+		}else
+		{
+			newCharArray[newArrayIndex++] = currentVal;
 		}
 	}
 	
@@ -57,28 +62,33 @@ char* cpp_class6::removeDuplicates(char * const myCharArray,unsigned int& length
 	return newCharArray;
 }
 
-float * cpp_class6::removeDuplicates(float * const myfloatArray, unsigned int & length)
+const float * cpp_class6::removeDuplicates(const float * const myfloatArray, unsigned int & length)
 {
-	assert(myfloatArray&& length >0);
+	assert(myfloatArray && length>0);
 	if (length == 1) {
 		return myfloatArray;
 	}
 	float* newFloatArray = new float[length];
 	unsigned int newArrayIndex = 0;
 	float currentVal;
+	bool isDuplicated = false;
 
 	for (unsigned int i = 0; i< length; i++) {
 
-		if (myfloatArray[i] == -1) {
-			continue;
-		}
 		currentVal = myfloatArray[i];
-		newFloatArray[newArrayIndex++] = currentVal;
 
-		for (unsigned int j = i + 1; j< length; j++) {
-			if (areEqual(currentVal, myfloatArray[j])) {
-				myfloatArray[j] = -1;
+		for (unsigned int j = 0; j< length; j++) {
+			if (currentVal == newFloatArray[j]) {
+				isDuplicated = true;
+				break;
 			}
+		}
+		if (isDuplicated) {
+			isDuplicated = false;
+		}
+		else
+		{
+			newFloatArray[newArrayIndex++] = currentVal;
 		}
 	}
 	length = newArrayIndex;

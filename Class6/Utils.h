@@ -12,8 +12,8 @@ namespace cpp_class6 {
 		*secondValue = temp;
 	}
 
-	char* removeDuplicates(char* const myCharArray, unsigned int &length);
-	float* removeDuplicates(float* const myfloatArray, unsigned int &length);
+	const char* removeDuplicates(const char* const myCharArray, unsigned int &length);
+	const float* removeDuplicates(const float* const myfloatArray, unsigned int &length);
 	bool areEqual(const float a, const float b);
 	void rotateToLeft(unsigned int * const myArr,unsigned int length, unsigned int rotationNum);
 	void rotateToLeft(short * const myArr, unsigned int length, unsigned int rotationNum);
